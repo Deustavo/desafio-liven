@@ -1,8 +1,14 @@
 * {
   margin: 0px;
   padding: 0px;
+  border: none;
 }
 
 .padding-page {
-  padding: 2vh 10vw;
+  padding-left: 10vw;
+  padding-right: 10vw;
+}
+
+.padding-header {
+  padding-top: 80px;
 }

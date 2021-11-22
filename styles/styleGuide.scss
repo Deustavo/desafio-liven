@@ -1,4 +1,10 @@
 :root {
-
+  --main-green: #50C878;
+  --main-red: #d91e18;
+  --black: #000;
+  --white: #fff;
 }
 
+.main-shadow {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}

@@ -1,0 +1,12 @@
+.app__button {
+  padding: 12px;
+  border-radius: 4px;
+
+  &__main {
+    background-color: var(--main-green);
+  }
+
+  &__danger {
+    background-color: var(--main-red);
+  }
+}
