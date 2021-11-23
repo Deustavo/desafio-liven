@@ -1,6 +1,8 @@
 .app__button {
   padding: 12px;
   border-radius: 4px;
+  transition: all ease-in-out 300ms;
+  cursor: pointer;
 
   &__main {
     background-color: var(--main-green);
@@ -8,5 +10,10 @@
 
   &__danger {
     background-color: var(--main-red);
+    color: var(--white);
+  }
+
+  &:hover {
+    filter: brightness(1.2);
   }
 }

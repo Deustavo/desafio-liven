@@ -7,7 +7,7 @@ import Button from '../../../shared/button';
 const Product: NextPage = ({ data }) => {
   return <>
     <section className="app__home__product-list__item main-shadow">
-      <Image src={data.image} width={100} height={100} alt={data.name}/>
+      <Image src={data.image} width={200} height={200} alt={data.name}/>
       <div className="app__home__product-list__item__container-text">
         <p className="app__home__product-list__item-price">R$ {data.price}</p>
         <p className="app__home__product-list__item-name">{data.name}</p>

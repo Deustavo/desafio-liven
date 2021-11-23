@@ -1,9 +1,11 @@
 // Layout
 @import "./layout/header.scss";
+@import "./layout//cart.scss";
 
 // Components
 @import "./shared/button.scss";
 @import "./shared/amount.scss";
+
 
 // Pages
 @import "./pages/homePage.scss";

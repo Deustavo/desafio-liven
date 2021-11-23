@@ -1,0 +1,54 @@
+.app-cart-modal {
+  position: fixed;
+  z-index: 3;
+  background-color: white;
+  width: 30vw;
+  height: 96vh;
+  padding: 2vw;
+  right: 0;
+  transition: ease-in-out 300ms all;
+}
+
+.background-modal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  background-color: rgba($color: #000, $alpha: 0.2);
+}
+
+@keyframes fadeIn {
+  0% {
+    display: flex;
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    display: flex;
+    opacity: 100%;
+  }
+  99% {
+    opacity: 0%;
+  }
+  100% {
+    display: none;
+  }
+  
+}
+
+.fade-out {
+  animation: fadeOut 300ms;
+}
+
+.fade-in {
+  animation: fadeIn 300ms
+}
+
+.is-open {
+  right: -50vw;
+}
