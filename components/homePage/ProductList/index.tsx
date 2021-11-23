@@ -15,7 +15,6 @@ const ProductList: NextPage = () => {
   }
 
   useEffect(() => {
-    console.log('aa');
     getProductList();
   }, []);
 

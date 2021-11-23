@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import React from 'react';
 import { CartContext } from '../../../provider/cart';
+import CartProducts from "./CartProducts";
 
 const Cart: NextPage = () => {
   const {isOpen, setIsOpen} = React.useContext(CartContext);
@@ -16,6 +17,7 @@ const Cart: NextPage = () => {
   return <>
     <section className={`app-cart-modal main-shadow ${classCartIsOpen()}`}>
       <h2>Carrinho</h2>
+      <CartProducts />
     </section>
     <div className={`background-modal ${classBackgroundIsOpen()}`} onClick={() => setIsOpen(!isOpen)}/>
   </>

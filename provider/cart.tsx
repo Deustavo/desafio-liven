@@ -17,15 +17,35 @@ export const CartProvider = (props) => {
       setProducts(response.data);
   }
 
-  function add(item) {
-    const newCart = cart;
-    newCart.push(item);
-    toast("Item adicionado ao carrinho!");
+  const addAmountInItem = (item, amount) => {
+    const newItem = item;
 
+    if (newItem.amount === undefined)
+      newItem.amount = amount;
+
+    else
+    newItem.amount = newItem.amount + amount;
+
+    return newItem;
+  }
+
+
+  const add = (item, amount) => {
+    const newCart = cart;
+    const newItem = item;
+    newItem = addAmountInItem(item, amount);
+    
+    let check_index = newCart.findIndex(product => product.id === newItem.id);
+    if (check_index !== -1)
+      newCart[check_index] = newItem;
+    else 
+      newCart.push(newItem);
+
+    toast("Item adicionado ao carrinho!");
     setCart([...newCart]);
   }
 
-  function remove(index) {
+  const remove = (index) => {
     let newCart = cart.filter((item, i) => i !== index);
 
     setCart([...newCart]);
