@@ -3,11 +3,16 @@ import type { NextPage } from 'next';
 import Button from '../button';
 
 const Amount: NextPage = ({ amount, setAmount }) => {
+  const positiveAmount = () => {
+    if (amount > 0)
+      setAmount(amount - 1);
+  }
+
   return <>
     <section className="app__amount">
       <Button
         className="danger"
-        action={() => setAmount(amount - 1)}
+        action={() => positiveAmount()}
         text="-"
       />
       <span className="app__amount__text">{amount}</span>
