@@ -24,18 +24,18 @@ export const CartProvider = (props) => {
       newItem.amount = amount;
 
     else
-    newItem.amount = newItem.amount + amount;
+      newItem.amount = newItem.amount + 1;
 
     return newItem;
   }
 
 
   const add = (item, amount) => {
-    const newCart = cart;
-    const newItem = item;
-    newItem = addAmountInItem(item, amount);
+    const newCart: Array<Object> = cart;
+    let newItem: Object = item;
+    newItem = addAmountInItem(newItem, amount);
     
-    let check_index = newCart.findIndex(product => product.id === newItem.id);
+    const check_index: number = newCart.findIndex(product => product.id === newItem.id);
     if (check_index !== -1)
       newCart[check_index] = newItem;
     else 
@@ -45,8 +45,17 @@ export const CartProvider = (props) => {
     setCart([...newCart]);
   }
 
-  const remove = (index) => {
-    let newCart = cart.filter((item, i) => i !== index);
+  const remove = (item) => {
+    let newCart: Array<Object> = cart;
+
+    console.log(item.amount);
+    if (item.amount < 1) {
+      console.log("aba");
+      newCart = cart.filter((i) => i.id !== item.id);
+    } else {
+      const check_index: number = newCart.findIndex(product => product.id === item.id);
+      newCart[check_index].amount = newCart[check_index].amount - 1;
+    }
 
     setCart([...newCart]);
   }

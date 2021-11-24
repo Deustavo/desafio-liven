@@ -5,17 +5,24 @@ import { CartContext } from '../../../../provider/cart';
 import Amount from '../../../shared/amount';
 
 const CartProduct: NextPage = ({ data }) => {
-  const {  } = React.useContext(CartContext);
+  const { add, remove } = React.useContext(CartContext);
+
+  const setAmount = (newAmount) => {
+    if (newAmount > data.amount)
+      return add(data, newAmount);
+
+    return remove(data);
+  }
 
   return <>
-    <section className="">
-      <Image src={data.image} width={200} height={200} alt={data.name}/>
-      <div>
-        <div>
+    <section className="app-cart-modal__container-products__item">
+      <Image src={data.image} width={80} height={80} alt={data.name}/>
+      <div className="app-cart-modal__container-products__item__description">
+        <div className="app-cart-modal__container-products__item__text">
           <p>{data.name}</p>
           <p>{data.price}</p>
         </div>
-        <Amount amount={1}/>
+        <Amount amount={data.amount} setAmount={setAmount}/>
       </div>
     </section>
   </>

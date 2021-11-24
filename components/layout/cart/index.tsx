@@ -16,7 +16,7 @@ const Cart: NextPage = () => {
 
   return <>
     <section className={`app-cart-modal main-shadow ${classCartIsOpen()}`}>
-      <h2>Carrinho</h2>
+      <h2 onClick={() => setIsOpen(!isOpen)}>Carrinho</h2>
       <CartProducts />
     </section>
     <div className={`background-modal ${classBackgroundIsOpen()}`} onClick={() => setIsOpen(!isOpen)}/>

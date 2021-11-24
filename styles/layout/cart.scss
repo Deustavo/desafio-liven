@@ -4,9 +4,33 @@
   background-color: white;
   width: 30vw;
   height: 96vh;
-  padding: 2vw;
+  padding: 2vh 2vw;
   right: 0;
   transition: ease-in-out 300ms all;
+
+  &__container-products {
+    height: calc(96vh - 130px);
+    overflow-y: auto;
+
+    &__item {
+      display: flex;
+      margin-bottom: 16px;
+
+      img {
+        border-radius: 4px;
+        margin-right: 16px !important;
+      }
+
+      &__description {
+      }
+    }
+  }
+
+  @media only screen and (max-width: 1024px) {
+    width: 100vw;
+    left: 0;
+    padding: 2vh 5vw;
+  }
 }
 
 .background-modal {
@@ -51,4 +75,5 @@
 
 .is-open {
   right: -50vw;
+  left: 150vw;
 }

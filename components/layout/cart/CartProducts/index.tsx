@@ -15,10 +15,10 @@ const CartProducts: NextPage = () => {
   }
 
   return <>
-    <section className={``}>
-      { cartIsEmpty ? <p>Carrinho vazio</p> :
+    <section className="app-cart-modal__container-products">
+      { !cartIsEmpty() ? <p>Carrinho vazio</p> :
         cart.map(data => 
-          <CartProduct key={item.id} data={data}/>
+          <CartProduct key={data.id} data={data}/>
         )
       }
     </section>
