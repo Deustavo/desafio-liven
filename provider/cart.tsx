@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import api from '../services/api';
 import { toast } from 'react-toastify';
 import { IItemCart } from '../store/cart/types';
@@ -10,6 +10,14 @@ export const CartProvider = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [products, setProducts] = useState<IItemCart[]>([]);
   const [totalValue, setTotalValue] = useState();
+
+  useEffect(() => {
+    let value = 0.00;
+    cart.map(item => {
+        value = (value + parseFloat(item.price)) * item.amount;
+    });
+    setTotalValue(value);
+  }, [cart]);
 
   const getProductList = async () => {
     const response = await api.get('product');
@@ -49,7 +57,7 @@ export const CartProvider = (props) => {
   const remove = (item: IItemCart) => {
     let newCart: Array<IItemCart> = cart;
 
-    if (item.amount < 1)
+    if (item.amount <= 1)
       newCart = cart.filter((i) => i.id !== item.id);
 
     else {
@@ -71,7 +79,8 @@ export const CartProvider = (props) => {
       remove,
       products,
       setProducts,
-      getProductList
+      getProductList,
+      totalValue
     }}>
       {props.children}
     </CartContext.Provider>
