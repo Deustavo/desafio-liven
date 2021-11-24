@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import api from '../services/api';
 import { toast } from 'react-toastify';
+import { IItemCart } from '../store/cart/types';
 
 export const CartContext = React.createContext({});
 
 export const CartProvider = (props) => {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState<IItemCart[]>([]);
   const [isOpen, setIsOpen] = useState(false);
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<IItemCart[]>([]);
   const [totalValue, setTotalValue] = useState();
 
   const getProductList = async () => {
@@ -17,8 +18,8 @@ export const CartProvider = (props) => {
       setProducts(response.data);
   }
 
-  const addAmountInItem = (item, amount) => {
-    const newItem = item;
+  const addAmountInItem = (item: IItemCart, amount: number) => {
+    const newItem: IItemCart = item;
 
     if (newItem.amount === undefined)
       newItem.amount = amount;
@@ -30,9 +31,9 @@ export const CartProvider = (props) => {
   }
 
 
-  const add = (item, amount) => {
-    const newCart: Array<Object> = cart;
-    let newItem: Object = item;
+  const add = (item: IItemCart, amount) => {
+    const newCart: Array<IItemCart> = cart;
+    let newItem: IItemCart = item;
     newItem = addAmountInItem(newItem, amount);
     
     const check_index: number = newCart.findIndex(product => product.id === newItem.id);
@@ -45,14 +46,13 @@ export const CartProvider = (props) => {
     setCart([...newCart]);
   }
 
-  const remove = (item) => {
-    let newCart: Array<Object> = cart;
+  const remove = (item: IItemCart) => {
+    let newCart: Array<IItemCart> = cart;
 
-    console.log(item.amount);
-    if (item.amount < 1) {
-      console.log("aba");
+    if (item.amount < 1)
       newCart = cart.filter((i) => i.id !== item.id);
-    } else {
+
+    else {
       const check_index: number = newCart.findIndex(product => product.id === item.id);
       newCart[check_index].amount = newCart[check_index].amount - 1;
     }
