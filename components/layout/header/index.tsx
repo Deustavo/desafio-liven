@@ -3,11 +3,14 @@ import type { NextPage } from 'next';
 import { CartContext } from '../../../provider/cart';
 
 const Home: NextPage = () => {
-  const {isOpen, setIsOpen} = React.useContext(CartContext);
+  const {isOpen, setIsOpen, cart} = React.useContext(CartContext);
   return <>
     <section className="app__header padding-page main-shadow">
-      <h3>Loja Simples</h3>
-      <p onClick={() => setIsOpen(!isOpen)}>Carrinho</p>
+      <h3>Deustavo store</h3>
+      <div className="app__header__cart-container">
+        <p>({cart.length})</p>
+        <i onClick={() => setIsOpen(!isOpen)} className="fas fa-shopping-cart" />
+      </div>
     </section>
   </>
 }

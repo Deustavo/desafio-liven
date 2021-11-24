@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import api from '../services/api';
 import { toast } from 'react-toastify';
+import api from '../services/api';
 import { IItemCart } from '../store/cart/types';
-
 export const CartContext = React.createContext({});
 
 export const CartProvider = (props) => {
@@ -39,7 +38,7 @@ export const CartProvider = (props) => {
   }
 
 
-  const add = (item: IItemCart, amount) => {
+  const add = (item: IItemCart, amount: number): void => {
     const newCart: Array<IItemCart> = cart;
     let newItem: IItemCart = item;
     newItem = addAmountInItem(newItem, amount);
@@ -50,17 +49,17 @@ export const CartProvider = (props) => {
     else 
       newCart.push(newItem);
 
-    toast("Item adicionado ao carrinho!");
     setCart([...newCart]);
   }
 
-  const remove = (item: IItemCart) => {
+  const remove = (item: IItemCart): void => {
     let newCart: Array<IItemCart> = cart;
 
-    if (item.amount <= 1)
+    if (item.amount <= 1) {
       newCart = cart.filter((i) => i.id !== item.id);
+      toast("Item removido do carrinho");
 
-    else {
+    } else {
       const check_index: number = newCart.findIndex(product => product.id === item.id);
       newCart[check_index].amount = newCart[check_index].amount - 1;
     }

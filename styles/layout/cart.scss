@@ -26,8 +26,26 @@
     }
   }
 
+  &__header-cart {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    
+    i {
+      margin-bottom: 16px;
+      font-size: 24px;
+      cursor: pointer;
+      transition: ease-in-out all 300ms;
+
+      &:hover {
+        color: var(--main-green);
+      }
+    }
+  }
+
   @media only screen and (max-width: 1024px) {
-    width: 100vw;
+    width: 90vw;
     left: 0;
     padding: 2vh 5vw;
   }

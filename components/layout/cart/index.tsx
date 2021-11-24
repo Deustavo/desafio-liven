@@ -8,7 +8,7 @@ const Cart: NextPage = () => {
   const {isOpen, setIsOpen, setCart, totalValue} = React.useContext(CartContext);
 
   const classCartIsOpen = () => {
-    return isOpen && "is-open"; 
+  return isOpen && "is-open"; 
   };
 
   const classBackgroundIsOpen = () => {
@@ -17,7 +17,10 @@ const Cart: NextPage = () => {
 
   return <>
     <section className={`app-cart-modal main-shadow ${classCartIsOpen()}`}>
-      <h2 onClick={() => setIsOpen(!isOpen)}>Carrinho</h2>
+      <div className='app-cart-modal__header-cart'>
+        <h2>Carrinho</h2>
+        <i onClick={() => setIsOpen(!isOpen)} className="fas fa-times"></i>
+      </div>
       <CartProducts />
       <h2>R$ {totalValue},00</h2>
       <Button

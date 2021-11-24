@@ -19,8 +19,8 @@ const CartProduct: NextPage = ({ data }) => {
       <Image src={data.image} width={80} height={80} alt={data.name}/>
       <div className="app-cart-modal__container-products__item__description">
         <div className="app-cart-modal__container-products__item__text">
+          <b>{data.price}</b>
           <p>{data.name}</p>
-          <p>{data.price}</p>
         </div>
         <Amount amount={data.amount} setAmount={setAmount}/>
       </div>

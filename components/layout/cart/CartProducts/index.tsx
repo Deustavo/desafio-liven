@@ -16,7 +16,7 @@ const CartProducts: NextPage = () => {
 
   return <>
     <section className="app-cart-modal__container-products">
-      { !cartIsEmpty() ? <p>Carrinho vazio</p> :
+      { !cartIsEmpty() ? <p>Seu carrinho está vazio</p> :
         cart.map(data => 
           <CartProduct key={data.id} data={data}/>
         )
