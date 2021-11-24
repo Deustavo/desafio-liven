@@ -7,7 +7,7 @@ import Amount from '../../../shared/amount';
 const CartProduct: NextPage = ({ data }) => {
   const { add, remove } = React.useContext(CartContext);
 
-  const setAmount = (newAmount) => {
+  const setAmount = (newAmount: number) => {
     if (newAmount > data.amount)
       return add(data, newAmount);
 

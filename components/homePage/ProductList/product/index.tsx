@@ -8,7 +8,7 @@ import Button from '../../../shared/button';
 
 const Product: NextPage = ({ data }) => {
   const { add } = React.useContext(CartContext);
-  const [amount, setAmount] = useState(1);
+  // const [amount, setAmount] = useState(1);
 
   return <>
     <section className="app__home__product-list__item main-shadow">
@@ -16,10 +16,10 @@ const Product: NextPage = ({ data }) => {
       <div className="app__home__product-list__item__container-text">
         <p className="app__home__product-list__item-price">R$ {data.price}</p>
         <p className="app__home__product-list__item-name">{data.name}</p>
-        <Amount amount={amount} setAmount={setAmount}/>
+        {/* <Amount amount={amount} setAmount={setAmount}/> */}
         <Button
           className="main"
-          action={() => add(data, amount)}
+          action={() => add(data, 1)}
           text="Adicionar ao carrinho"
         />
       </div>
