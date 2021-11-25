@@ -5,7 +5,7 @@
   width: 30vw;
   height: 96vh;
   padding: 2vh 2vw;
-  right: 0;
+  left: 66vw;
   transition: ease-in-out 300ms all;
 
   &__container-products {
@@ -18,7 +18,7 @@
 
       img {
         border-radius: 4px;
-        margin-right: 16px !important;
+        padding-right: 16px !important;
       }
 
       &__description {
@@ -92,6 +92,11 @@
 }
 
 .is-open {
-  right: -50vw;
-  left: 150vw;
+  left: 100vw;
+}
+
+@media only screen and (max-width: 1024px) { 
+  .is-open {
+    left: 100vw;
+  }
 }

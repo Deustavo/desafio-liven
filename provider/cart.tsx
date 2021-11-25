@@ -1,20 +1,41 @@
-import React, { useEffect, useState } from 'react';
+import { createContext, ReactNode, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import api from '../services/api';
-import { IItemCart } from '../store/cart/types';
-export const CartContext = React.createContext({});
+import { IItemCart, ICartContext } from '../store/cart/types';
 
-export const CartProvider = (props) => {
+const cartContextDefaultValues: ICartContext = {
+  cart: [],
+  setCart: () => {},
+  isOpen: false,
+  setIsOpen: () => {},
+  add: () => {},
+  remove: () => {},
+  products: [],
+  setProducts: () => {},
+  getProductList: () => {},
+  totalValue: 0,
+  setTotalValue: () => {},
+};
+
+export const CartContext = createContext<ICartContext>(cartContextDefaultValues);
+
+type Props = {
+  children: ReactNode;
+};
+
+export const CartProvider = ({ children }: Props) => {
   const [cart, setCart] = useState<IItemCart[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [products, setProducts] = useState<IItemCart[]>([]);
-  const [totalValue, setTotalValue] = useState();
+  const [totalValue, setTotalValue] = useState<number | undefined>();
 
   useEffect(() => {
-    let value = 0.00;
+    let value = 0;
+
     cart.map(item => {
         value = (value + parseFloat(item.price)) * item.amount;
     });
+    
     setTotalValue(value);
   }, [cart]);
 
@@ -79,9 +100,10 @@ export const CartProvider = (props) => {
       products,
       setProducts,
       getProductList,
-      totalValue
+      totalValue,
+      setTotalValue,
     }}>
-      {props.children}
+      {children}
     </CartContext.Provider>
   );
 }

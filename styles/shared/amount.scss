@@ -1,6 +1,7 @@
 .app__amount {
-  margin-bottom: 8px;
-  
+  margin: 8px 0px;
+  display: flex;
+  align-items: center;
   &__text {
     margin: 0px 16px;
   }

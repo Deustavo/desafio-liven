@@ -3,8 +3,9 @@ import type { NextPage } from 'next';
 import Image from 'next/image';
 import { CartContext } from '../../../../provider/cart';
 import Amount from '../../../shared/amount';
+import { IDataItemCart } from '../../../../store/cart/types';
 
-const CartProduct: NextPage = ({ data }) => {
+const CartProduct: NextPage<IDataItemCart> = ({ data }) => {
   const { add, remove } = React.useContext(CartContext);
 
   const setAmount = (newAmount: number) => {

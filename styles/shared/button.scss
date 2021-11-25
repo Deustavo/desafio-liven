@@ -17,6 +17,11 @@
     font-weight: bold;
   }
 
+  &__amount {
+    width: 36px;
+    height: 36px;
+  }
+
   &:hover {
     filter: brightness(1.3);
   }

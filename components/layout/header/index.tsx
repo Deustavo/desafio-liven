@@ -2,7 +2,7 @@ import React from 'react';
 import type { NextPage } from 'next';
 import { CartContext } from '../../../provider/cart';
 
-const Home: NextPage = () => {
+const Header: NextPage = () => {
   const {isOpen, setIsOpen, cart} = React.useContext(CartContext);
   return <>
     <section className="app__header padding-page main-shadow">
@@ -15,4 +15,4 @@ const Home: NextPage = () => {
   </>
 }
 
-export default Home
+export default Header;

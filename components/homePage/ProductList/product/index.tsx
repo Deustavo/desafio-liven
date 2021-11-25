@@ -4,8 +4,10 @@ import type { NextPage } from 'next'
 import Image from 'next/image';
 import { CartContext } from '../../../../provider/cart';
 import Button from '../../../shared/button';
+import { IItemCart } from '../../../../store/cart/types';
 
-const Product: NextPage = ({ data }) => {
+
+const Product: NextPage<{data: IItemCart}> = ({ data }) => {
   const { add } = React.useContext(CartContext);
 
   const onAddProduct = () => {
@@ -20,8 +22,8 @@ const Product: NextPage = ({ data }) => {
         <b className="app__home__product-list__item-price">R$ {data.price}</b>
         <p className="app__home__product-list__item-name">{data.name}</p>
         <Button
-          className="main"
           action={() => onAddProduct()}
+          className="main"
           text="Adicionar ao carrinho"
         />
       </div>
