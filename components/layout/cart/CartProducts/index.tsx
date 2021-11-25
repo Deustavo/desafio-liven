@@ -6,10 +6,6 @@ import CartProduct from './CartProduct';
 const CartProducts: NextPage = () => {
   const { cart } = React.useContext(CartContext);
 
-  useEffect(() => {
-    console.log(cart);
-  }, [cart]);
-
   const cartIsEmpty = () => {
     return cart.length > 0
   }
