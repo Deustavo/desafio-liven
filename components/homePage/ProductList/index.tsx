@@ -1,17 +1,18 @@
 import type { NextPage } from 'next';
-import { useEffect, useState } from 'react';
+import { useEffect, useContext } from 'react';
+import { CartContext } from '../../../provider/cart';
 
 import api from '../../../services/api';
 import Product from './product';
 
 const ProductList: NextPage = () => {
-  const [productList, setProductList] = useState([]);
+  const { products, setProducts } = useContext(CartContext);
 
   const getProductList = async () => {
     const response = await api.get('product');
     
     if (response.status === 200)
-      setProductList(response.data);
+      setProducts(response.data);
   }
 
   useEffect(() => {
@@ -21,7 +22,7 @@ const ProductList: NextPage = () => {
   return <>
     <section className="app__home__product-list">
       {
-        productList.length > 0 && productList.map((product, index) =>
+        products.length > 0 && products.map((product, index) =>
           <Product key={index} data={product}/>
         )
       }
