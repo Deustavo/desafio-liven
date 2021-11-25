@@ -1,24 +1,38 @@
 import React from 'react';
-import {rest} from 'msw';
-import {setupServer} from 'msw/node';
-import {render, fireEvent, waitFor, screen} from '@testing-library/react';
+import { CartContext } from '../provider/cart';
 import Home from '../pages/index';
-import { products } from '../__mocks__/products';
+import { cartContextDefaultValues } from '../__mocks__/cartContext';
+import {render, screen} from '@testing-library/react';
 
-const server = setupServer(
-  rest.get('https://5d6da1df777f670014036125.mockapi.io/api/v1/product', (req, res, ctx) => {
-    // return res(ctx.json({greeting: 'hello there'}));
-    console.log(ctx);
-    return res(ctx.json({products: products}));
-  }),
-);
+function renderUserGreeter(value) {
+  return render(
+    <CartContext.Provider value={value}>
+      <Home />
+    </CartContext.Provider>
+  );
+}
 
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
+describe("home", () => {
+  it("Verificar lista de produtos do contexto", async () => {
+    renderUserGreeter(cartContextDefaultValues);
 
-test('Carregar produtos da loja', async () => {
-  const wrapper = render(<Home/>);
-  // console.log(wrapper);
-  // console.log(wrapper.debug());
+    const productName = screen.getAllByText(/^Produto exemplo/);
+
+    expect(productName.length).toBe(4);
+  });
 });
+
+
+// TODO:
+// estudar funcionamento do WSL
+
+// import { rest } from 'msw';
+// import { setupServer } from 'msw/node';
+// const server = setupServer(
+//   rest.get('https://5d6da1df777f670014036125.mockapi.io/api/v1/product', (req, res, ctx) => {
+//     return res(ctx.json({data: dataProducts}));
+//   }),
+// );
+// beforeAll(() => server.listen());
+// afterEach(() => server.resetHandlers());
+// afterAll(() => server.close());

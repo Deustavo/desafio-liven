@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import api from '../services/api';
 import { IItemCart, ICartContext } from '../store/cart/types';
 
-const cartContextDefaultValues: ICartContext = {
+export const cartContextDefaultValues: ICartContext = {
   cart: [],
   setCart: () => {},
   isOpen: false,
