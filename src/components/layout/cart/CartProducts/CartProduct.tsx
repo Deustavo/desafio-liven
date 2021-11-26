@@ -17,7 +17,9 @@ const CartProduct: NextPage<IDataItemCart> = ({ data }) => {
 
   return <>
     <section className="app-cart-modal__container-products__item">
-      <Image src={data.image} width={80} height={80} alt={data.name}/>
+      <div className='container-img'>
+        <Image src={data.image} width={80} height={80} alt={data.name}/>
+      </div>
       <div className="app-cart-modal__container-products__item__description">
         <div className="app-cart-modal__container-products__item__text">
           <b>{data.price}</b>

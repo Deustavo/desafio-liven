@@ -16,12 +16,8 @@
       display: flex;
       margin-bottom: 16px;
 
-      img {
-        border-radius: 4px;
-        padding-right: 16px !important;
-      }
-
-      &__description {
+      .container-img {
+        margin-right: 16px;
       }
     }
   }
